@@ -1158,22 +1158,6 @@
           options,
           cb
         );
-        // instance.confirmTransaction.estimateGas(txId, wallet.txDefaults(), function (e, gas){
-        //   if (e) {
-        //     cb(e);
-        //   }
-        //   else {
-        //     Web3Service.sendTransaction(
-        //       instance.confirmTransaction,
-        //       [
-        //         txId,
-        //         wallet.txDefaults({gas: Math.ceil(gas * 1.5)})
-        //       ],
-        //       options,
-        //       cb
-        //     );
-        //   }
-        // });
       };
 
       /**
@@ -1207,22 +1191,6 @@
           options,
           cb
         );
-        // instance.executeTransaction.estimateGas(txId, wallet.txDefaults(), function (e, gas) {
-        //   if (e) {
-        //     cb(e);
-        //   }
-        //   else {
-        //     Web3Service.sendTransaction(
-        //       instance.executeTransaction,
-        //       [
-        //         txId,
-        //         wallet.txDefaults({gas: Math.ceil(gas * 1.5)})
-        //       ],
-        //       options,
-        //       cb
-        //     );
-        //   }
-        // });
       };
 
       /**
@@ -1333,33 +1301,6 @@
               options,
               cb
             );
-            // estimate gas
-            // walletInstance.submitTransaction.estimateGas(
-            //   tx.to,
-            //   tx.value,
-            //   data,
-            //   count,
-            //   wallet.txDefaults(),
-            //   function (e, gas) {
-            //     if (e) {
-            //       cb(e);
-            //     }
-            //     else {
-            //       Web3Service.sendTransaction(
-            //         walletInstance.submitTransaction,
-            //         [
-            //           tx.to,
-            //           tx.value,
-            //           data,
-            //           count,
-            //           wallet.txDefaults({gas: Math.ceil(gas * 1.5)}),
-            //         ],
-            //         options,
-            //         cb
-            //       );
-            //     }
-            //   }
-            // );
           }
         }).call();
       };
