@@ -1149,22 +1149,15 @@
       */
       wallet.confirmTransaction = function (address, txId, options, cb) {
         var instance = Web3Service.web3.eth.contract(wallet.json.multiSigDailyLimit.abi).at(address);
-        instance.confirmTransaction.estimateGas(txId, wallet.txDefaults(), function (e, gas){
-          if (e) {
-            cb(e);
-          }
-          else {
-            Web3Service.sendTransaction(
-              instance.confirmTransaction,
-              [
-                txId,
-                wallet.txDefaults({gas: Math.ceil(gas * 1.5)})
-              ],
-              options,
-              cb
-            );
-          }
-        });
+        Web3Service.sendTransaction(
+          instance.confirmTransaction,
+          [
+            txId,
+            wallet.txDefaults({gas: 300000})
+          ],
+          options,
+          cb
+        );
       };
 
       /**
@@ -1189,22 +1182,15 @@
       */
       wallet.executeTransaction = function (address, txId, options, cb) {
         var instance = Web3Service.web3.eth.contract(wallet.json.multiSigDailyLimit.abi).at(address);
-        instance.executeTransaction.estimateGas(txId, wallet.txDefaults(), function (e, gas) {
-          if (e) {
-            cb(e);
-          }
-          else {
-            Web3Service.sendTransaction(
-              instance.executeTransaction,
-              [
-                txId,
-                wallet.txDefaults({gas: Math.ceil(gas * 1.5)})
-              ],
-              options,
-              cb
-            );
-          }
-        });
+        Web3Service.sendTransaction(
+          instance.executeTransaction,
+          [
+            txId,
+            wallet.txDefaults({gas: 300000})
+          ],
+          options,
+          cb
+        );
       };
 
       /**
@@ -1303,32 +1289,17 @@
             cb(e);
           }
           else {
-            // estimate gas
-            walletInstance.submitTransaction.estimateGas(
-              tx.to,
-              tx.value,
-              data,
-              count,
-              wallet.txDefaults(),
-              function (e, gas) {
-                if (e) {
-                  cb(e);
-                }
-                else {
-                  Web3Service.sendTransaction(
-                    walletInstance.submitTransaction,
-                    [
-                      tx.to,
-                      tx.value,
-                      data,
-                      count,
-                      wallet.txDefaults({gas: Math.ceil(gas * 1.5)}),
-                    ],
-                    options,
-                    cb
-                  );
-                }
-              }
+            Web3Service.sendTransaction(
+              walletInstance.submitTransaction,
+              [
+                tx.to,
+                tx.value,
+                data,
+                count,
+                wallet.txDefaults({gas: 300000}),
+              ],
+              options,
+              cb
             );
           }
         }).call();
